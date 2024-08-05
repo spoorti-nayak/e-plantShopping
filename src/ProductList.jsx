@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addItem } from './CartSlice';
 import './ProductList.css';
 import CartItem from './CartItem';
@@ -8,6 +8,9 @@ function ProductList() {
     const [showCart, setShowCart] = useState(false); 
     const [addedToCart, setAddedToCart] = useState({}); // State to track added items
     const dispatch = useDispatch(); // Hook to dispatch actions
+
+    // Retrieve cart items quantity
+    const cartItems = useSelector(state => state.cart.items);
 
     const plantsArray = [
         // ... (plantsArray data remains unchanged)
@@ -121,4 +124,5 @@ function ProductList() {
 }
 
 export default ProductList;
+
 
