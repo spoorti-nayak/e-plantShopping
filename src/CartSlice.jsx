@@ -11,8 +11,8 @@ export const CartSlice = createSlice({
       const existingProduct = state.items.find(item => item.name === product.name);
 
       if (existingProduct) {
-        // If product already in cart, we can choose to update quantity or just ignore
-        // For simplicity, we're not doing anything here if the product is already in the cart
+        // If product already in cart, update quantity instead of adding a new entry
+        existingProduct.quantity += product.quantity;
       } else {
         state.items.push(product); // Add new product to the cart
       }
@@ -26,7 +26,6 @@ export const CartSlice = createSlice({
       const product = state.items.find(item => item.name === name);
       if (product) {
         // Update product quantity if necessary
-        // Assuming product object has a quantity property
         product.quantity = quantity;
       }
     },
